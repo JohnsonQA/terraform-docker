@@ -1,0 +1,16 @@
+#Cluster creation and managed node groups
+# Need 3 instances and spot instance is true. spot instance is where free resources in aws given to us in a discount of 70-90%
+#But those can be taken back by aws anytime so this is not recommendede for production
+
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: roboshop
+  region: us-east-1
+
+managedNodeGroups:
+  - name: roboshop
+    instanceTypes: ["m5.large", "c3.large","c4.large","c5.large"]
+    desiredCapacity: 3
+    spot: true
